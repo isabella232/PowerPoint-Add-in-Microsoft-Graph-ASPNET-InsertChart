@@ -2,7 +2,7 @@
 
 Learn how to build a Microsoft Office Add-in that connects to Microsoft Graph, finds all workbooks stored in OneDrive for Business, fetches all charts in the workbooks using the Excel REST APIs, and inserts an image of a chart into a PowerPoint slide using Office.js.
 
-![Insert Excel charts using Microsoft Graph in a PowerPoint Add-in sample](images/InsertChart.PNG)
+![Insert Excel charts using Microsoft Graph in a PowerPoint Add-in sample](/images/InsertChart.PNG)
 
 ## Introduction
 
