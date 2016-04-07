@@ -41,6 +41,7 @@
       <Host xsi:type="Presentation">
         <!-- Form factor. Currenly only DesktopFormFactor is supported. We will add TabletFormFactor and PhoneFormFactor in the future-->
         <DesktopFormFactor>
+          
            <!--Function file is an html page that includes the JavaScript where functions for ExecuteAction will be called. 
             Think of the FunctionFile as the "code behind" ExecuteFunction 
             This sample doesn't use this file; just adding the element for reference-->
