@@ -41,6 +41,20 @@
       <Host xsi:type="Presentation">
         <!-- Form factor. Currenly only DesktopFormFactor is supported. We will add TabletFormFactor and PhoneFormFactor in the future-->
         <DesktopFormFactor>
+          <GetStarted>
+            <!--Title of the Getting Started callout. resid points to a ShortString resource -->
+            <Title resid="GetStarted.Title"/>
+
+           <!--Description of the Getting Started callout. resid points to a LongString resource -->
+            <Description resid="GetStarted.Description"/>
+
+           <!--Not used right now but you need to provide a valid resource. We will add code in the future to consume this URL. 
+							resid points to a Url resource -->
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+          </GetStarted>
+          
+          
+          
           
            <!--Function file is an html page that includes the JavaScript where functions for ExecuteAction will be called. 
             Think of the FunctionFile as the "code behind" ExecuteFunction 
@@ -105,9 +119,13 @@
         </bt:Url>
         <bt:Url id="residImageHomeUrl" DefaultValue="https://localhost:44301/Home/Index">
         </bt:Url>
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://github.com/OfficeDev/PowerPoint-Add-in-Microsoft-Graph-ASPNET-InsertChart">
+        </bt:Url>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="residLabel3" DefaultValue="Pick a chart">
+        </bt:String>
+        <bt:String id="GetStarted.Title" DefaultValue="Insert Chart add-in has loaded successfully.">
         </bt:String>
         <bt:String id="residLabel4" DefaultValue="Excel charts on OneDrive">
         </bt:String>
@@ -115,7 +133,10 @@
       <bt:LongStrings>
         <bt:String id="residToolTip" DefaultValue="Insert charts from your workbooks stored on OneDrive">
         </bt:String>
+        <bt:String id="GetStarted.Description" DefaultValue="Choose Insert, then Pick a Chart to get started.">
+        </bt:String>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
   </OfficeApp>
+
