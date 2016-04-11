@@ -28,7 +28,7 @@ To run this code sample, the following are required.
 * Excel workbooks (with charts) stored on OneDrive for Business in your Office 365 subscription.
 
 * PowerPoint for Windows Desktop, version 16.0.6769.2001 or higher.
-* Office Developer Tools
+* [Office Developer Tools](https://www.visualstudio.com/en-us/features/office-tools-vs.aspx)
 
 * A Microsoft Azure Tenant. This add-in requires Azure Active Directiory (AD). Azure AD provides identity services that applications use for authentication and authorization. A trial subscription can be acquired here: [Microsoft Azure](https://account.windowsazure.com/SignUp).
 
