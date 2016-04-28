@@ -81,6 +81,7 @@ Questions about Office 365 development in general should be posted to [Stack Ove
 * [Microsoft Graph (Excel) ToDo code sample](https://github.com/OfficeDev/Microsoft-Graph-ASPNET-ExcelREST-ToDo)
 * [Microsoft Graph documentation](https://graph.microsoft.io/en-us/docs)
 * [Office Add-ins documentation](https://dev.office.com/docs/add-ins/overview/office-add-ins)
+* Check out the video from //Build - [Office Platform Overview](https://channel9.msdn.com/Events/Build/2016/B872 "Office Platform Overview").
 
 ## Copyright
 Copyright (c) 2016 Microsoft Corporation. All rights reserved.
