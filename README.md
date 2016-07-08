@@ -21,9 +21,7 @@ To run this code sample, the following are required.
 
 * Visual Studio 2015.
 
-* An Office 365 account. You can sign up for an [Office 365 Developer subscription](https://portal.office.com/Signup/Signup.aspx?OfferId=6881A1CB-F4EB-4db3-9F18-388898DAF510&DL=DEVELOPERPACK&ali=1#0) that includes the resources you need to start building apps.
-> Note: If you already have a subscription, the previous link sends you to a page with the message *Sorry, you can’t add that to your current account.* In that case, use an account from your current Office 365 subscription.
-
+* An Office 365 account which you can get by joining the [Office 365 Developer Program](https://profile.microsoft.com/RegSysProfileCenter/wizardnp.aspx?wizid=14b845d0-938c-45af-b061-f798fbb4d170&lcid=1033) that includes a free 1 year subscription to Office 365.
 
 * Excel workbooks (with charts) stored on OneDrive for Business in your Office 365 subscription.
 
