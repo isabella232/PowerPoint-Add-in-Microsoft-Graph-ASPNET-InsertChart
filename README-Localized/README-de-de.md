@@ -21,7 +21,7 @@ Damit dieses Codebeispiel ausgeführt wird, gelten die folgenden Anforderungen.
 
 * Visual Studio 2015
 
-* Ein Office 365-Konto, das Sie beim Beitreten zum <a herf="https://profile.microsoft.com/RegSysProfileCenter/wizardnp.aspx?wizid=14b845d0-938c-45af-b061-f798fbb4d170&amp;lcid=1033">Office 365 Developer Program</a> erhalten, das ein kostenloses 1-Jahres-Abonnement für Office 365 enthält.
+* Ein Office 365-Konto, das Sie beim Beitreten zum <a herf="https://aka.ms/devprogramsignup">Office 365 Developer Program</a> erhalten, das ein kostenloses 1-Jahres-Abonnement für Office 365 enthält.
 
 * Excel-Arbeitsmappen (mit Diagrammen), die in OneDrive for Business in Ihrem Office 365-Abonnement gespeichert sind
 

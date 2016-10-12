@@ -21,7 +21,7 @@ Microsoft Graph に接続し、OneDrive for Business に保存されたすべて
 
 * Visual Studio 2015。
 
-* <a herf="https://profile.microsoft.com/RegSysProfileCenter/wizardnp.aspx?wizid=14b845d0-938c-45af-b061-f798fbb4d170&amp;lcid=1033">Office 365 開発者プログラム</a>に参加することによって取得できる Office 365 アカウント。このプログラムには、Office 365 の 1 年間の無料サブスクリプションが含まれます。
+* <a herf="https://aka.ms/devprogramsignup">Office 365 開発者プログラム</a>に参加することによって取得できる Office 365 アカウント。このプログラムには、Office 365 の 1 年間の無料サブスクリプションが含まれます。
 
 * Office 365 サブスクリプションの OneDrive for Busines に保存された Excel ブック (グラフ付き)。
 

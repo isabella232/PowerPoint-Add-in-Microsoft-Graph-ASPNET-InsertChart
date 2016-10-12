@@ -21,7 +21,7 @@ Para ejecutar este ejemplo de código, se requiere lo siguiente.
 
 * Visual Studio 2015.
 
-* Una cuenta de Office 365, que puede obtener al unirse a <a herf="https://profile.microsoft.com/RegSysProfileCenter/wizardnp.aspx?wizid=14b845d0-938c-45af-b061-f798fbb4d170&amp;lcid=1033">Office 365 Developer Program</a> (Programa de desarrolladores de Office 365) que incluye una suscripción gratuita de 1 año a Office 365.
+* Una cuenta de Office 365, que puede obtener al unirse a <a herf="https://aka.ms/devprogramsignup">Office 365 Developer Program</a> (Programa de desarrolladores de Office 365) que incluye una suscripción gratuita de 1 año a Office 365.
 
 * Los libros de Excel (con gráficos) almacenados en OneDrive para la Empresa en su suscripción de Office 365.
 

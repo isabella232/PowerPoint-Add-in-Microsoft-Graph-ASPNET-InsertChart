@@ -21,7 +21,7 @@ Pour exécuter cet exemple de code, les éléments suivants sont requis.
 
 * Visual Studio 2015.
 
-* Un compte Office 365 que vous pouvez obtenir en rejoignant le <a herf="https://profile.microsoft.com/RegSysProfileCenter/wizardnp.aspx?wizid=14b845d0-938c-45af-b061-f798fbb4d170&amp;lcid=1033">programme de développement Office 365</a> qui inclut un abonnement gratuit d’un an à Office 365.
+* Un compte Office 365 que vous pouvez obtenir en rejoignant le <a herf="https://aka.ms/devprogramsignup">programme de développement Office 365</a> qui inclut un abonnement gratuit d’un an à Office 365.
 
 * Des classeurs Excel (avec des graphiques) stockés sur OneDrive Entreprise dans votre abonnement Office 365.
 
