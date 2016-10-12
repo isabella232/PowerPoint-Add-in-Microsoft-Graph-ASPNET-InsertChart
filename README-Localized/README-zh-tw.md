@@ -21,7 +21,7 @@
 
 * Visual Studio 2015。
 
-* 一個 Office 365 帳戶，您可以藉由加入 <a herf="https://profile.microsoft.com/RegSysProfileCenter/wizardnp.aspx?wizid=14b845d0-938c-45af-b061-f798fbb4d170&amp;lcid=1033">Office 365 開發人員計劃</a>取得，包括免費的 1 年 Office 365 訂用帳戶。
+* 一個 Office 365 帳戶，您可以藉由加入 <a herf="https://aka.ms/devprogramsignup">Office 365 開發人員計劃</a>取得，包括免費的 1 年 Office 365 訂用帳戶。
 
 * 您的 Office 365 訂用帳戶中的商務用 OneDrive 上儲存的 Excel 活頁簿 (具有圖表)。
 

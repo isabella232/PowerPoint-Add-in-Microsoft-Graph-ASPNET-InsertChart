@@ -21,7 +21,7 @@
 
 * Visual Studio 2015。
 
-* 你可以通过加入包含 1 年免费的 Office 365 订阅的 <a herf="https://profile.microsoft.com/RegSysProfileCenter/wizardnp.aspx?wizid=14b845d0-938c-45af-b061-f798fbb4d170&amp;lcid=1033">Office 365 开发人员计划</a>获取的 Office 365 帐户。
+* 你可以通过加入包含 1 年免费的 Office 365 订阅的 <a herf="https://aka.ms/devprogramsignup">Office 365 开发人员计划</a>获取的 Office 365 帐户。
 
 * 存储在 Office 365 订阅中的 OneDrive for Business 上的 Excel 工作簿（含有图表）。
 
