@@ -21,7 +21,7 @@ To run this code sample, the following are required.
 
 * Visual Studio 2015.
 
-* An Office 365 account which you can get by joining the [Office 365 Developer Program](https://profile.microsoft.com/RegSysProfileCenter/wizardnp.aspx?wizid=14b845d0-938c-45af-b061-f798fbb4d170&lcid=1033) that includes a free 1 year subscription to Office 365.
+* An Office 365 account which you can get by joining the [Office 365 Developer Program](https://aka.ms/devprogramsignup) that includes a free 1 year subscription to Office 365.
 
 * Excel workbooks (with charts) stored on OneDrive for Business in your Office 365 subscription.
 
