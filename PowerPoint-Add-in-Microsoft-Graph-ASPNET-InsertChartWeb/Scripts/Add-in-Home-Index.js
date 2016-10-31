@@ -49,7 +49,7 @@
 
         // height and width are percentages of the size of the parent Office application, e.g., PowerPoint, Excel, Word, etc.
         Office.context.ui.displayDialogAsync(fullUrl,
-                {height: 40, width: 40, requireHTTPS: true}, function (result) {
+                {height: 40, width: 40}, function (result) {
             console.log("Dialog has initialized. Wiring up events");
             _dlg = result.value;
             _dlg.addEventHandler(Microsoft.Office.WebExtension.EventType.DialogMessageReceived, processMessage);
