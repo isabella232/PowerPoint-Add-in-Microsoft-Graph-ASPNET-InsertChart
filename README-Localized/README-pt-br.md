@@ -1,10 +1,10 @@
-# Inserir gráficos do Excel usando o Microsoft Graph em um Suplemento do PowerPoint 
+﻿# <a name="insert-excel-charts-using-microsoft-graph-in-a-powerpoint-add-in"></a>Inserir gráficos do Excel usando o Microsoft Graph em um Suplemento do PowerPoint 
 
 Saiba como criar um Suplemento do Microsoft Office que se conecta ao Microsoft Graph, localiza todas as pastas de trabalho armazenadas no OneDrive for Business, busca todos os gráficos nas pastas de trabalho usando as APIs REST do Excel e insere a imagem de um gráfico em um slide do PowerPoint usando Office.js.
 
 ![Inserir gráficos do Excel usando o Microsoft Graph em um Suplemento do PowerPoint](../images/InsertChart.png)
 
-## Introdução
+## <a name="introduction"></a>Introdução
 
 A integração de dados de provedores de serviço online aumenta o valor e a adoção de seus suplementos. O código a seguir mostra como conectar seu suplemento ao Microsoft Graph. Use este exemplo de código para:
 
@@ -16,12 +16,12 @@ A integração de dados de provedores de serviço online aumenta o valor e a ado
 * Use comandos de suplemento no PowerPoint.
 
 
-## Pré-requisitos
+## <a name="prerequisites"></a>Pré-requisitos
 Para executar este exemplo de código, são necessários.
 
 * Visual Studio 2015.
 
-* Uma conta do Office 365 que pode ser obtida ingressando no <a herf="https://aka.ms/devprogramsignup">Programa do Desenvolvedor do Office 365</a> que inclui uma assinatura gratuita de 1 ano para o Office 365.
+* Uma conta do Office 365 que você pode obter pelo [Programa para Desenvolvedores do Office 365](https://aka.ms/devprogramsignup) que inclui uma assinatura gratuita de 1 ano do Office 365.
 
 * Pastas de trabalho (com gráficos) do Excel armazenadas no OneDrive for Business em sua assinatura do Office 365.
 
@@ -30,7 +30,7 @@ Para executar este exemplo de código, são necessários.
 
 * Um Locatário do Microsoft Azure. Esse suplemento requer o Microsoft Azure Active Directory (AD). O Azure AD fornece serviços de identidade que os aplicativos usam para autenticação e autorização. Você pode adquirir uma assinatura de avaliação aqui: [Microsoft Azure](https://account.windowsazure.com/SignUp).
 
-## Configurar o projeto
+## <a name="configure-the-project"></a>Configurar o projeto
 
 1. No **Visual Studio**, escolha o projeto **PowerPoint-Add-in-Microsoft-Graph-ASPNET-InsertChartWeb**. Em **Propriedades**, certifique-se de **SSL Habilitado** seja **True**. Verifique se a **URL do SSL** usa o mesmo nome de domínio e número de porta como esses listado na etapa 3 abaixo.
  
@@ -40,47 +40,49 @@ Para executar este exemplo de código, são necessários.
 
  - URL DE ENTRADA: https://localhost:44301/AzureADAuth/Authorize 
  - URI DA ID DO APLIVATIVO: https://localhost:44301
- - URL DE RESPOSTA/localhost:44301/AzureADAuth/Authorize	
+ - URL DE RESPOSTA: https://localhost:44301/AzureADAuth/Authorize 
 
-	> Observação: Depois que você registrar seu aplicativo, copie a id do cliente e o segredo do cliente exibidos no Portal de Gerenciamento do Azure.
-	 
+    > Observação: Depois que você registrar seu aplicativo, copie a id do cliente e o segredo do cliente exibidos no Portal de Gerenciamento do Azure.
+     
 4. Conceda permissões para seu aplicativo.
-	*  No Portal de Gerenciamento do Azure, selecione a guia **Active Directory** e um locatário do Office 365.
-	*  Selecione a guia **Aplicativos** e clique no aplicativo que você deseja configurar. Escolha **Configurar**.
-	*  Em **permissões para outros aplicativos**, adicione **Microsoft Graph**.
-	*  Em **Permissões Delegadas**, escolha **Ler arquivos do usuário e arquivos compartilhados com o usuário**.
+    *  No Portal de Gerenciamento do Azure, selecione a guia **Active Directory** e um locatário do Office 365.
+    *  Selecione a guia **Aplicativos** e clique no aplicativo que você deseja configurar. Escolha **Configurar**.
+    *  Em **permissões para outros aplicativos**, adicione **Microsoft Graph**.
+    *  Em **Permissões Delegadas**, escolha **Ler arquivos do usuário e arquivos compartilhados com o usuário**.
 
-5.  Em web.config, defina **AAD:ClientID** como id do cliente e **AAD:ClientSecret** como seu segredo de cliente. 
+5.  Em web.config, defina **AAD:ClientID** como ID do cliente e **AAD:ClientSecret** como seu segredo de cliente. 
 
-## Executar o projeto
+## <a name="run-the-project"></a>Executar o projeto
 1. Abra o arquivo de solução do Visual Studio. 
 2. Clique com o botão direito do mouse em **PowerPoint-Add-in-Microsoft-Graph-ASPNET-InsertChart** e escolha **Definir como Projeto de Inicialização**.
 2. Pressione F5. 
 3. No PowerPoint, escolha **Inserir** > **Escolher um gráfico** para abrir o suplemento do painel de tarefas.
 
-## Problemas conhecidos
+## <a name="known-issues"></a>Problemas conhecidos
 
 * Situação: Ao tentar executar o exemplo de código, o suplemento não será carregado.
-	* Resolução: 
-		1. No Visual Studio, abra o **Pesquisador de Objetos do SQL Server**.
-		2. Expanda **(localdb) \MSSQLLocalDB** > **Bancos de Dados**.
-		3. Clique com o botão direito do mouse em **PowerPoint-Add-in-Microsoft-Graph-ASPNET-InsertChart** e escolha **Excluir**. 
-* Situação: Quando você executa o código de exemplo, você recebe um erro na linha *Office.context.ui.messageParent*.	
-	* Resolução: Interrompa a execução do código de exemplo e reinicie-o. 
+    * Resolução: 
+        1. No Visual Studio, abra o **Pesquisador de Objetos do SQL Server**.
+        2. Expanda **(localdb)\MSSQLLocalDB** > **Bancos de Dados**.
+        3. Clique com o botão direito do mouse em **PowerPoint-Add-in-Microsoft-Graph-ASPNET-InsertChart** e escolha **Excluir**. 
+* Cenário: Quando você executa o código de exemplo, você recebe um erro na linha *Office.context.ui.messageParent*.   
+    * Resolução: Interrompa a execução do código de exemplo e reinicie-o. 
 * Se baixar o arquivo zip, ao extrair os arquivos, você receberá um erro indicando que o caminho do arquivo é muito longo.
-	* Resolução: Descompacte os arquivos em uma pasta diretamente na raiz (por exemplo, c:\exemplo).
+    * Resolução: Descompacte os arquivos em uma pasta diretamente na raiz (por exemplo, c:\exemplo).
 
-## Perguntas e comentários
+## <a name="questions-and-comments"></a>Perguntas e comentários
 Gostaríamos de receber seu comentário sobre o exemplo de *Inserir gráficos do Excel usando o Microsoft Graph em um Suplemento do PowerPoint*. Você pode enviar comentários na seção *Problemas* deste repositório. As perguntas sobre o desenvolvimento do Office 365 em geral devem ser postadas no [Stack Overflow](http://stackoverflow.com/questions/tagged/Office365+API). Verifique se suas perguntas são marcadas com [office-js], [MicrosoftGraph] e [API].
 
-## Recursos adicionais
+## <a name="additional-resources"></a>Recursos adicionais
 
 * [Exemplo de código de Tarefas Pendentes do Microsoft Graph (Excel)](https://github.com/OfficeDev/Microsoft-Graph-ASPNET-ExcelREST-ToDo)
 * [Documentação do Microsoft Graph](https://graph.microsoft.io/en-us/docs)
 * [Documentação dos Suplementos do Office](https://dev.office.com/docs/add-ins/overview/office-add-ins)
-* Confira o vídeo em //Compilar - [Visão Geral da Plataforma do Office](https://channel9.msdn.com/Events/Build/2016/B872 "Visão Geral da Plataforma do Office").
+* Confira o vídeo em //Build – [Visão Geral da Plataforma do Office](https://channel9.msdn.com/Events/Build/2016/B872 "Visão Geral da Plataforma do Office").
 
-## Direitos autorais
-Copyright (C) 2016 Microsoft Corporation. Todos os direitos reservados.
+## <a name="copyright"></a>Copyright
+Copyright (c) 2016 Microsoft Corporation. Todos os direitos reservados.
 
 
+
+Este projeto adotou o [Código de Conduta de Software Livre da Microsoft](https://opensource.microsoft.com/codeofconduct/). Para saber mais, confira as [Perguntas frequentes sobre o Código de Conduta](https://opensource.microsoft.com/codeofconduct/faq/) ou contate [opencode@microsoft.com](mailto:opencode@microsoft.com) se tiver outras dúvidas ou comentários.
