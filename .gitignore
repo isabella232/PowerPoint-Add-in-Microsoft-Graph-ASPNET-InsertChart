@@ -15,7 +15,6 @@
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
-App_Data/
 x64/
 x86/
 bld/
@@ -199,8 +198,8 @@ UpgradeLog*.XML
 UpgradeLog*.htm
 
 # SQL Server files
-*.mdf
-*.ldf
+#*.mdf
+#*.ldf
 
 # Business Intelligence projects
 *.rdl.data
