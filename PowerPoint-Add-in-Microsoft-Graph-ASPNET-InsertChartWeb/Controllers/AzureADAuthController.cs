@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license at the bottom of this file.
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+//using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 using Newtonsoft.Json;
 using PowerPointAddinMicrosoftGraphASPNETInsertChart.Helpers;
 using PowerPointAddinMicrosoftGraphASPNETInsertChart.Models;
@@ -38,26 +39,28 @@ namespace PowerPointAddinMicrosoftGraphASPNETInsertChart.Controllers
         /// </summary>
         /// <param name="authState">The login or logout status of the user.</param>
         /// <returns>A redirect to the Office 365 login page.</returns>
-        public ActionResult Login(string authState)
+        public async Task<ActionResult> Login(string authState)
         {
             if (string.IsNullOrEmpty(Settings.AzureADClientId) || string.IsNullOrEmpty(Settings.AzureADClientSecret))
             {
                 ViewBag.Message = "Please set your client ID and client secret in the Web.config file";
                 return View();
             }
-            
-            var authContext = new AuthenticationContext(Settings.AzureADAuthority);
+
+            ConfidentialClientApplicationBuilder clientBuilder = ConfidentialClientApplicationBuilder.Create(Settings.AzureADClientId);
+            ConfidentialClientApplication clientApp = (ConfidentialClientApplication)clientBuilder.Build();
 
             // Generate the parameterized URL for Azure login.
-            Uri authUri = authContext.GetAuthorizationRequestURL(
-                Settings.GraphApiResource,
-                Settings.AzureADClientId,
-                loginRedirectUri,
-                UserIdentifier.AnyUser,
-                "state=" + authState);
+            string[] graphScopes = { "Files.Read.All", "User.Read" };
+            var urlBuilder = clientApp.GetAuthorizationRequestUrl(graphScopes);
+            urlBuilder.WithRedirectUri(loginRedirectUri.ToString());
+            urlBuilder.WithAuthority(Settings.AzureADAuthority);
+            urlBuilder.WithExtraQueryParameters("state=" + authState);
+            var authUrl = await urlBuilder.ExecuteAsync(System.Threading.CancellationToken.None);
 
             // Redirect the browser to the login page, then come back to the Authorize method below.
-            return Redirect(authUri.ToString());
+            return Redirect(authUrl.ToString());
+
         }
 
         /// <summary>
@@ -67,17 +70,27 @@ namespace PowerPointAddinMicrosoftGraphASPNETInsertChart.Controllers
         /// <returns>The default view.</returns>
         public async Task<ActionResult> Authorize()
         {
-            var authContext = new AuthenticationContext(Settings.AzureADAuthority);
+
+            ConfidentialClientApplicationBuilder clientBuilder = ConfidentialClientApplicationBuilder.Create(Settings.AzureADClientId);
+            clientBuilder.WithClientSecret(Settings.AzureADClientSecret);
+            clientBuilder.WithRedirectUri(loginRedirectUri.ToString());
+            clientBuilder.WithAuthority(Settings.AzureADAuthority);
+            ConfidentialClientApplication clientApp = (ConfidentialClientApplication)clientBuilder.Build();
+
+            string[] graphScopes = { "Files.Read.All", "User.Read" };
+
+
             var authStateString = Request.QueryString["state"];
             var authState = JsonConvert.DeserializeObject<AuthState>(authStateString);
             try
             {
-                // Get the token.
-                var authResult = await authContext.AcquireTokenByAuthorizationCodeAsync(
-                    Request.Params["code"],                                         // The auth 'code' parameter from the Azure redirect.
-                    loginRedirectUri,                                               // The same redirectUri as used before in Login method.
-                    new ClientCredential(Settings.AzureADClientId, Settings.AzureADClientSecret), // Use the client ID and secret to establish app identity.
-                    Settings.GraphApiResource);                                     // Provide the identifier of the resource we want to access
+                // Get and save the token.
+                var authResultBuilder = clientApp.AcquireTokenByAuthorizationCode(
+                    graphScopes,
+                    Request.Params["code"]   // The auth 'code' parameter from the Azure redirect.
+                );
+
+                var authResult = await authResultBuilder.ExecuteAsync();
 
                 await SaveAuthToken(authState, authResult);
 

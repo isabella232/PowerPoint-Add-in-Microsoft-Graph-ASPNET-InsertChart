@@ -13,11 +13,11 @@ namespace PowerPointAddinMicrosoftGraphASPNETInsertChart.Helpers
         public static string AzureADClientId = ConfigurationManager.AppSettings["AAD:ClientID"];
         public static string AzureADClientSecret = ConfigurationManager.AppSettings["AAD:ClientSecret"];
 
-        public static string AzureADAuthority = @"https://login.microsoftonline.com/common";
+        public static string AzureADAuthority = @"https://login.microsoftonline.com/" + ConfigurationManager.AppSettings["AAD:O365TenantID"] + "/oauth2/v2.0";
         public static string AzureADLogoutAuthority = @"https://login.microsoftonline.com/common/oauth2/logout?post_logout_redirect_uri=";
         public static string GraphApiResource = @"https://graph.microsoft.com/";
 
-       
+
         /// <summary>
         /// Ensures that the current key to the SessionToken table is in the cookie.
         /// </summary>

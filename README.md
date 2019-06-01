@@ -29,17 +29,20 @@ Learn how to build a Microsoft Office Add-in that connects to Microsoft Graph, f
 Integrating data from online service providers increases the value and adoption of your add-ins. This code sample shows you how to connect your add-in to Microsoft Graph. Use this code sample to:
 
 * Connect to Microsoft Graph from an Office Add-in.
-* Use the OAuth 2.0 authorization framework in an add-in.
+* Use the MSAL .NET Library to implement the OAuth 2.0 authorization framework in an add-in.
 * Use the Excel and OneDrive REST APIs from Microsoft Graph.
 * Show a dialog using the Office UI namespace.
-* Build an Add-in using ASP.NET MVC and Office.js. 
+* Build an Add-in using ASP.NET MVC,MSAL, and Office.js. 
 * Use add-in commands in PowerPoint.
 
 
 ## Prerequisites
+
 To run this code sample, the following are required.
 
-* Visual Studio 2015.
+* Visual Studio 2019 or later.
+
+* SQL Server Express (No longer automatically installed with recent versions of Visual Studio.)
 
 * An Office 365 account which you can get by joining the [Office 365 Developer Program](https://aka.ms/devprogramsignup) that includes a free 1 year subscription to Office 365.
 
@@ -56,27 +59,22 @@ To run this code sample, the following are required.
  
 2. Ensure your Azure subscription is bound to your Office 365 tenant. For more information, see the Active Directory team's blog post, [Creating and Managing Multiple Windows Azure Active Directories](http://blogs.technet.com/b/ad/archive/2013/11/08/creating-and-managing-multiple-windows-azure-active-directories.aspx). The section **Adding a new directory** will explain how to do this. You can also see [Set up your Office 365 development environment](https://msdn.microsoft.com/office/office365/howto/setup-development-environment#bk_CreateAzureSubscription) and the section **Associate your Office 365 account with Azure AD to create and manage apps** for more information.
 
-3. Register your application using the [Azure Management Portal](https://manage.windowsazure.com). To learn how to register your application, see [Register your browser-based web app with the Azure Management Portal](https://msdn.microsoft.com/office/office365/HowTo/add-common-consent-manually#bk_RegisterWebApp). Use the following settings:
+3. Register your application using the [Azure Management Portal](https://manage.windowsazure.com). Sign-in with the account of an administrator or your Office 365 subscription. To learn how to register your application, see [Register an application with the Microsoft identity platforml](https://msdn.microsoft.com/office/office365/HowTo/add-common-consent-manually). Use the following settings:
 
- - SIGN-ON URL: https://localhost:44301/AzureADAuth/Authorize 
- - APP ID URI: https://localhost:44301
- - REPLY URL: https://localhost:44301/AzureADAuth/Authorize	
+ - REDIRCT URI: https://localhost:44301/AzureADAuth/Authorize	
+ - SUPPORTED ACCOUNT TYPES: "Accounts in this organizational directory only"
+ - IMPLICIT GRANT: Do not enable any Implicit Grant options
+ - API PERMISSIONS: **Files.Read.All** and **User.Read**
 
-	> Note: After you register your application, copy the client id and client secret that is shown in the Azure Management Portal.
+	> Note: After you register your application, copy the **Application (client) ID** and the **Directory (tenant) ID** on the **Overview** blade of the App Registration in the Azure Management Portal. When you create the client secret on the **Certificates & secrets** blade, copy it too. 
 	 
-4. Grant permissions to your application.
-	*  In the Azure Management Portal, select the **Active Directory** tab and an Office 365 tenant.
-	*  Select the **Applications** tab and click the application that you want to configure. Choose **Configure**.
-	*  In **permissions to other applications**, add **Microsoft Graph**.
-	*  In **Delegated Permissions**, choose **Read user files and files shared with user**.
-
-5.  In web.config, set **AAD:ClientID** to your client id, and set **AAD:ClientSecret** to your client secret. 
+4.  In web.config, use the values that you copied in the previous step. Set **AAD:ClientID** to your client id, set **AAD:ClientSecret** to your client secret, and set **"AAD:O365TenantID"** to your tenant ID. 
 
 ## Run the project
 1. Open the Visual Studio solution file. 
 2. Right-click **PowerPoint-Add-in-Microsoft-Graph-ASPNET-InsertChart**, and then choose **Set as StartUp Project**.
 2. Press F5. 
-3. In PowerPoint, choose **Insert** > **Pick a chart** to open the task pane add-in.
+3. In PowerPoint, open the **Insert** tab, and select **Pick a chart** to open the task pane add-in.
 
 ## Known issues
 
@@ -96,13 +94,12 @@ Questions about Office 365 development in general should be posted to [Stack Ove
 
 ## Additional resources
 
-* [Microsoft Graph (Excel) ToDo code sample](https://github.com/OfficeDev/Microsoft-Graph-ASPNET-ExcelREST-ToDo)
-* [Microsoft Graph documentation](https://graph.microsoft.io/en-us/docs)
-* [Office Add-ins documentation](https://dev.office.com/docs/add-ins/overview/office-add-ins)
-* Check out the video from //Build - [Office Platform Overview](https://channel9.msdn.com/Events/Build/2016/B872 "Office Platform Overview").
+* [Microsoft Graph (Excel) ToDo code sample](https://github.com/microsoftgraph/aspnet-todo-rest-sample)
+* [Microsoft Graph documentation](https://docs.microsoft.com/en-us/graph/)
+* [Office Add-ins documentation](https://docs.microsoft.com/en-us/office/dev/add-ins/overview/office-add-ins)
 
 ## Copyright
-Copyright (c) 2016 Microsoft Corporation. All rights reserved.
+Copyright (c) 2016 - 2019 Microsoft Corporation. All rights reserved.
 
 
 
