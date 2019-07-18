@@ -1,12 +1,12 @@
 ---
 topic: sample
 products:
-- PowerPoint
-- Excel
-- Office 365
-- OneDrive
+- office-powerpoint
+- office-excel
+- office-365
+- office-onedrive
 languages:
-- JavaScript
+- javascript
 extensions:
   contentType: samples
   technologies:
@@ -18,7 +18,7 @@ extensions:
   - OneDrive
   createdDate: 3/17/2016 9:42:20 AM
 ---
-# Insert Excel charts using Microsoft Graph in a PowerPoint Add-in 
+ Insert Excel charts using Microsoft Graph in a PowerPoint Add-in 
 
 Learn how to build a Microsoft Office Add-in that connects to Microsoft Graph, finds all workbooks stored in OneDrive for Business, fetches all charts in the workbooks using the Excel REST APIs, and inserts an image of a chart into a PowerPoint slide using Office.js.
 
