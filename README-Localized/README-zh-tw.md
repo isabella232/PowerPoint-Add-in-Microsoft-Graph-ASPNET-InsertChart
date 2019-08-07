@@ -22,7 +22,7 @@ extensions:
 
 了解如何建置 Microsoft Office 增益集，此增益集可連接到 Microsoft Graph、尋找儲存在商務用 OneDrive 中的所有活頁簿、使用 Excel REST API 擷取活頁簿中的所有圖表，以及使用 Office.js 將圖表的影像插入 PowerPoint 投影片。
 
-![使用 Microsoft Graph 在 PowerPoint 增益集中插入 Excel 圖表範例](images/InsertChart.png)
+![使用 Microsoft Graph 在 PowerPoint 增益集中插入 Excel 圖表範例](../images/InsertChart.png)
 
 ## 簡介
 

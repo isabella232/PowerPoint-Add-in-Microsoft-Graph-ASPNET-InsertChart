@@ -22,7 +22,7 @@ extensions:
 
 Microsoft Graph に接続し、OneDrive for Business に保存されたすべてのブックを検索し、Excel REST API を使用してブック内のすべてのグラフをフェッチし、Office.js を使用してグラフの画像を PowerPoint スライドに挿入する Microsoft Office アドインの作成方法について説明します。
 
-![PowerPoint アドインで Microsoft Graph を使用して Excel グラフを挿入するサンプル](images/InsertChart.png)
+![PowerPoint アドインで Microsoft Graph を使用して Excel グラフを挿入するサンプル](../images/InsertChart.png)
 
 ## はじめに
 

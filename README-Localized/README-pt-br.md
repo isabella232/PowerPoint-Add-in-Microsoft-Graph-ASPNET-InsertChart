@@ -22,7 +22,7 @@ extensions:
 
 Saiba como criar um Suplemento do Microsoft Office que se conecta ao Microsoft Graph, localiza todas as pastas de trabalho armazenadas no OneDrive for Business, busca todos os gráficos nas pastas de trabalho usando as APIs REST do Excel e insere a imagem de um gráfico em um slide do PowerPoint usando Office.js.
 
-![Inserir gráficos do Excel usando o Microsoft Graph em um Suplemento do PowerPoint](images/InsertChart.png)
+![Inserir gráficos do Excel usando o Microsoft Graph em um Suplemento do PowerPoint](../images/InsertChart.png)
 
 ## Introdução
 

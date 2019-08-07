@@ -22,7 +22,7 @@ extensions:
 
 Узнайте, как создать надстройку Microsoft Office, которая подключается к Microsoft Graph, находит все книги, сохраненные в OneDrive для бизнеса, получает все диаграммы из них с помощью REST API для Excel и вставляет изображение диаграммы в слайд PowerPoint с помощью Office.js.
 
-![Вставка диаграмм Excel с помощью Microsoft Graph в надстройке PowerPoint](images/InsertChart.png)
+![Вставка диаграмм Excel с помощью Microsoft Graph в надстройке PowerPoint](../images/InsertChart.png)
 
 ## Введение
 

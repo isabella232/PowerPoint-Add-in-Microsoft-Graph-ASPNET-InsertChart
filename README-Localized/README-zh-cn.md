@@ -22,7 +22,7 @@ extensions:
 
 了解如何构建连接到 Microsoft Graph 的 Microsoft Office 外接程序，查找存储在 OneDrive for Business 中的所有工作簿，使用 Excel REST API 提取工作簿中的所有图表，以及使用 Office.js 将图表的图像插入到 PowerPoint 幻灯片中。
 
-![在 PowerPoint 外接程序示例中使用 Microsoft Graph 插入 Excel 图表](images/InsertChart.png)
+![在 PowerPoint 外接程序示例中使用 Microsoft Graph 插入 Excel 图表](../images/InsertChart.png)
 
 ## 简介
 

@@ -22,7 +22,7 @@ extensions:
 
 Obtenga información acerca de cómo crear un complemento de Microsoft Office que se conecte a Microsoft Graph, busque todos los libros almacenados en OneDrive para la Empresa, capture todos los gráficos en los libros mediante las API de REST de Excel, e inserte una imagen de un gráfico en una diapositiva de PowerPoint con Office.js.
 
-![Ejemplo de insertar gráficos de Excel con Microsoft Graph en un complemento de PowerPoint](images/InsertChart.png)
+![Ejemplo de insertar gráficos de Excel con Microsoft Graph en un complemento de PowerPoint](../images/InsertChart.png)
 
 ## Introducción
 
