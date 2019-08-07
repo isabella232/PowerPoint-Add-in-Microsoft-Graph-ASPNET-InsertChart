@@ -22,7 +22,7 @@ extensions:
 
 Erfahren Sie, wie Sie ein Microsoft Office-Add-In erstellen, das eine Verbindung mit Microsoft Graph herstellt, nach allen in OneDrive for Business gespeicherten Arbeitsmappen sucht, alle Diagramme in den Arbeitsmappen mithilfe der Excel REST-APIs abruft und ein Bild eines Diagramms in eine PowerPoint-Folie mit Office.js einfügt.
 
-![Einfügen von Excel-Diagrammen mit Microsoft Graph in einem PowerPoint-Add-In – Beispiel](images/InsertChart.png)
+![Einfügen von Excel-Diagrammen mit Microsoft Graph in einem PowerPoint-Add-In – Beispiel](../images/InsertChart.png)
 
 ## Einführung
 
