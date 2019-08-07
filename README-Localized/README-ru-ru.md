@@ -1,25 +1,48 @@
-﻿# <a name="insert-excel-charts-using-microsoft-graph-in-a-powerpoint-add-in"></a>Вставка диаграмм Excel с помощью Microsoft Graph в надстройке PowerPoint 
+---
+page_type: sample
+products:
+- office-powerpoint
+- office-excel
+- office-365
+- office-onedrive
+languages:
+- javascript
+extensions:
+  contentType: samples
+  technologies:
+  - Add-ins
+  - Microsoft Graph
+  services:
+  - Excel
+  - Office 365
+  - OneDrive
+  createdDate: 3/17/2016 9:42:20 AM
+---
+ Вставка диаграмм Excel с помощью Microsoft Graph в надстройке PowerPoint 
 
-Узнайте, как создать надстройку Microsoft Office, которая подключается к Microsoft Graph, находит все книги, сохраненные в OneDrive для бизнеса, получает все их диаграммы с помощью REST API для Excel и вставляет изображение диаграммы в слайд PowerPoint с помощью Office.js.
+Узнайте, как создать надстройку Microsoft Office, которая подключается к Microsoft Graph, находит все книги, сохраненные в OneDrive для бизнеса, получает все диаграммы из них с помощью REST API для Excel и вставляет изображение диаграммы в слайд PowerPoint с помощью Office.js.
 
 ![Вставка диаграмм Excel с помощью Microsoft Graph в надстройке PowerPoint](../images/InsertChart.png)
 
-## <a name="introduction"></a>Введение
+## Введение
 
 Интегрируя данные поставщиков интернет-служб, вы повышаете ценность и популярность своих надстроек. В этом примере кода показано, как подключить надстройку к Microsoft Graph. С его помощью можно:
 
 * подключиться к Microsoft Graph из надстройки Office;
-* использовать в надстройке платформу проверки подлинности OAuth 2.0;
+* использовать библиотеку MSAL .NET для внедрения инфраструктуры авторизации OAuth 2.0 в надстройке;
 * использовать REST API для Excel и OneDrive из Microsoft Graph;
 * отображать диалоговое окно с использованием пространства имен пользовательского интерфейса Office;
-* создать надстройку с помощью ASP.NET MVC и Office.js; 
+* создать надстройку с помощью ASP.NETMVC,MSAL и Office.js; 
 * использовать команды надстроек в PowerPoint.
 
 
-## <a name="prerequisites"></a>Необходимые компоненты
+## Необходимые компоненты
+
 Чтобы запустить этот пример кода, необходимо следующее:
 
-* Visual Studio 2015.
+* Visual Studio 2019 или более поздней версии.
+
+* SQL Server Express (больше не устанавливается автоматически с последними версиями Visual Studio).
 
 * Учетная запись Office 365, которую получают участники [Программы для разработчиков Office 365](https://aka.ms/devprogramsignup), предоставляется вместе с бесплатной годичной подпиской на Office 365.
 
@@ -28,61 +51,55 @@
 * PowerPoint для Windows Desktop версии не ниже 16.0.6769.2001.
 * [Office Developer Tools](https://www.visualstudio.com/en-us/features/office-tools-vs.aspx)
 
-* Клиент Microsoft Azure. Для использования этой надстройки требуется Azure Active Directory (AD), где доступны службы удостоверений, которые приложения используют для проверки подлинности и авторизации. Здесь можно получить пробную подписку: [Microsoft Azure](https://account.windowsazure.com/SignUp).
+* Клиент Microsoft Azure. Эта надстройка требует наличия Azure Active Directiory (AD). В Azure AD доступны службы идентификации, которые приложения используют для проверки подлинности и авторизации. Здесь можно получить пробную подписку: [Microsoft Azure](https://account.windowsazure.com/SignUp).
 
-## <a name="configure-the-project"></a>Настройка проекта
+## Настройка проекта
 
-1. В **Visual Studio** выберите проект **PowerPoint-Add-in-Microsoft-Graph-ASPNET-InsertChartWeb**. Убедитесь, что в окне **Свойства** для параметра **SSL включен** задано значение **True**. Убедитесь, что в поле **URL-адрес SSL** указаны доменное имя и номер порта, упомянутые на этапе 3.
+1. В **Visual Studio** выберите проект **PowerPoint-Add-in-Microsoft-Graph-ASPNET-InsertChartWeb**. Убедитесь, что в окне **Свойства** для параметра **SSL включен** задано значение **Иcтина**. Убедитесь, что в поле **URL-адрес SSL** используются доменное имя и номер порта, указанные на этапе 3.
  
-2. Убедитесь, что ваша подписка на Azure связана с клиентом Office 365. Дополнительные сведения об этом см. в записи блога команды Active Directory, посвященной [созданию нескольких каталогов Azure AD и управлению ими](http://blogs.technet.com/b/ad/archive/2013/11/08/creating-and-managing-multiple-windows-azure-active-directories.aspx). Соответствующие инструкции приведены в разделе о **добавлении нового каталога**. Дополнительные сведения см. в статье [Как настроить среду разработки для Office 365](https://msdn.microsoft.com/office/office365/howto/setup-development-environment#bk_CreateAzureSubscription) и, в частности, разделе **Связывание Azure AD и учетной записи Office 365 для создания приложений и управления ими**.
+2. Убедитесь, что ваша подписка Azure привязана к клиенту Office 365. Для получения дополнительных сведений просмотрите запись в блоге команды Active Directory, посвященную [созданию нескольких каталогов Windows Azure Active Directories и управлению ими](http://blogs.technet.com/b/ad/archive/2013/11/08/creating-and-managing-multiple-windows-azure-active-directories.aspx). Инструкции приведены в разделе о **добавлении нового каталога**. Дополнительные сведения см. в статье [Как настроить среду разработки для Office 365](https://msdn.microsoft.com/office/office365/howto/setup-development-environment#bk_CreateAzureSubscription) и, в частности, в разделе **Связывание Azure AD и учетной записи Office 365 для создания приложений и управления ими**.
 
-3. Зарегистрируйте свое приложение на [портале управления Azure](https://manage.windowsazure.com). Сведения о том, как это сделать, см. в разделе [Регистрация браузерного веб-приложения на портале управления Azure](https://msdn.microsoft.com/office/office365/HowTo/add-common-consent-manually#bk_RegisterWebApp). Используйте следующие параметры:
+3. Зарегистрируйте свое приложение на [портале управления Azure](https://manage.windowsazure.com). Войдите в систему с учетной записью администратора или своей подписки на Office 365. Сведения о регистрации приложений см. в статье [Регистрация приложения с помощью платформы удостоверений Майкрософт](https://msdn.microsoft.com/office/office365/HowTo/add-common-consent-manually). Используйте указанные ниже параметры:
 
- - URL-АДРЕС ВХОДА: https://localhost:44301/AzureADAuth/Authorize 
- - URI КОДА ПРИЛОЖЕНИЯ: https://localhost:44301.
- - URL-АДРЕС ОТВЕТА: https://localhost:44301/AzureADAuth/Authorize. 
+ - URI ПЕРЕНАПРАВЛЕНИЯ: https://localhost:44301/AzureADAuth/Authorize	
+ - ПОДДЕРЖИВАЕМЫЕ ТИПЫ УЧЕТНЫХ ЗАПИСЕЙ "Учетные записи только в этом каталоге организации"
+ - НЕЯВНОЕ ПРЕДОСТАВЛЕНИЕ РАЗРЕШЕНИЯ: Не включайте никакие параметры неявного предоставления разрешений
+ - РАЗРЕШЕНИЯ API: **Files.Read.All** и **User.Read**
 
-    > Примечание. Зарегистрировав приложение, скопируйте идентификатор и секрет клиента, отображенные на портале управления Azure.
-     
-4. Предоставьте разрешения для приложения.
-    *  На портале управления Azure откройте вкладку **Active Directory** и выберите клиент Office 365.
-    *  Откройте вкладку **Приложения** и выберите приложение, которое нужно настроить. Выберите элемент **Настроить**.
-    *  В разделе **Разрешения для других приложений** добавьте **Microsoft Graph**.
-    *  В разделе **Делегированные разрешения** выберите элемент **Чтение файлов пользователя, а также файлов, которыми с ним поделились**.
+	> Примечание. После регистрации приложения скопируйте **идентификатор приложения (клиента)** и **идентификатор директории (клиента)** в колонке **Обзор** регистрации приложения на портале управления Azure. Также скопируйте секретный код клиента, созданный в колонке **Сертификаты и секреты**. 
+	 
+4.  В узле web.config используйте значения, скопированные на предыдущем этапе. Для параметра **AAD:ClientID** задайте значение идентификатора клиента, а для параметра **AAD:ClientSecret** — значение секретного кода клиента. Задайте ваш идентификатор клиента Office 365 в **"AAD:O365TenantID"**. 
 
-5.  В узле web.config для параметра **AAD:ClientID** задайте значение идентификатора клиента, а для параметра **AAD:ClientSecret** — значение секрета клиента. 
-
-## <a name="run-the-project"></a>Запуск проекта
+## Запуск проекта
 1. Откройте файл решения в Visual Studio. 
-2. Щелкните правой кнопкой мыши проект **PowerPoint-Add-in-Microsoft-Graph-ASPNET-InsertChart** и выберите команду **Назначить запускаемые проекты**.
+2. Щелкните правой кнопкой мыши проект **PowerPoint-Add-in-Microsoft-Graph-ASPNET-InsertChart** и выберите команду **Назначить запускаемым проектом**.
 2. Нажмите клавишу F5. 
-3. В PowerPoint откройте вкладку **Вставка**  >  **Выбор диаграммы**, чтобы открыть надстройку области задач.
+3. В PowerPoint откройте вкладку **Вставка** и нажмите **Выбрать диаграмму**, чтобы открыть надстройку области задач.
 
-## <a name="known-issues"></a>Известные проблемы
+## Известные проблемы
 
 * Сценарий. При попытке запустить пример кода надстройка не загружается.
-    * Решение. 
-        1. В Visual Studio откройте **обозреватель объектов SQL Server**.
-        2. Разверните **(localdb)\MSSQLLocalDB** > **Базы данных**.
-        3. Щелкните правой кнопкой мыши элемент **PowerPoint-Add-in-Microsoft-Graph-ASPNET-InsertChart** и выберите команду **Удалить**. 
-* Сценарий: При запуске примера кода в строке *Office.context.ui.messageParent* возникает ошибка.   
-    * Решение. Остановите выполнение примера кода и перезапустите его. 
+	* Решение: 
+		1. В Visual Studio откройте **обозреватель объектов SQL Server**.
+		2. Разверните узел **(localdb)\\MSSQLLocalDB** > **Базы данных**.
+		3. Щелкните правой кнопкой мыши элемент **PowerPoint-Add-in-Microsoft-Graph-ASPNET-InsertChart** и выберите команду **Удалить**. 
+* Сценарий: При запуске примера кода в строке *Office.context.ui.messageParent* возникает ошибка.	
+	* Решение: Остановите выполнение примера кода и перезапустите его. 
 * При распаковке скачанного ZIP-файла возникает ошибка и отображается сообщение о том, что путь к файлу слишком длинный.
-    * Решение. Распакуйте файлы в папку непосредственно под корневой (например, C:\sample).
+	* Решение. Распакуйте файлы в папку непосредственно под корневой (например, C:\\sample).
 
-## <a name="questions-and-comments"></a>Вопросы и комментарии
-Мы будем рады получить ваши отзывы о примере *вставки диаграмм Excel с помощью Microsoft Graph в надстройке PowerPoint*. Своими мыслями можете поделиться на вкладке *Issues* (Проблемы) этого репозитория. Общие вопросы о разработке решений для Office 365 следует задавать на сайте [Stack Overflow](http://stackoverflow.com/questions/tagged/Office365+API). Помечайте свои вопросы тегами [office-js], [MicrosoftGraph] и [API].
+## Вопросы и комментарии
+Мы будем рады получить ваши отзывы о примере *вставки диаграмм Excel с помощью Microsoft Graph в надстройке PowerPoint*. Своими мыслями можете поделиться на вкладке *Проблемы* этого репозитория. Общие вопросы о разработке решений для Office 365 следует публиковать на сайте [Stack Overflow](http://stackoverflow.com/questions/tagged/Office365+API). Помечайте свои вопросы тегами \[office-js], \[MicrosoftGraph] и \[API].
 
-## <a name="additional-resources"></a>Дополнительные ресурсы
+## Дополнительные ресурсы
 
-* [Пример кода для использования списка дел в Microsoft Graph (Excel)](https://github.com/OfficeDev/Microsoft-Graph-ASPNET-ExcelREST-ToDo)
-* [Документация по Microsoft Graph](https://graph.microsoft.io/en-us/docs)
-* [Документация по надстройкам Office](https://dev.office.com/docs/add-ins/overview/office-add-ins)
-* Посмотрите видео в разделе Build, содержащее [обзор платформы Office](https://channel9.msdn.com/Events/Build/2016/B872 "Обзор платформы Office").
+* [Пример кода для использования списка дел в Microsoft Graph (Excel)](https://github.com/microsoftgraph/aspnet-todo-rest-sample)
+* [Документация по Microsoft Graph](https://docs.microsoft.com/en-us/graph/)
+* [Документация по надстройкам Office](https://docs.microsoft.com/en-us/office/dev/add-ins/overview/office-add-ins)
 
-## <a name="copyright"></a>Авторское право
-© Корпорация Майкрософт (Microsoft Corporation), 2016. Все права защищены.
-
+## Авторские права
+(с) Корпорация Майкрософт (Microsoft Corporation), 2016 - 2019. Все права защищены.
 
 
-Этот проект соответствует [правилам поведения Майкрософт, касающимся обращения с открытым кодом](https://opensource.microsoft.com/codeofconduct/). Дополнительную информацию см. в разделе [часто задаваемых вопросов по правилам поведения](https://opensource.microsoft.com/codeofconduct/faq/). Если у вас возникли вопросы или замечания, напишите нам по адресу [opencode@microsoft.com](mailto:opencode@microsoft.com).
+
+Этот проект соответствует [Правилам поведения разработчиков открытого кода Майкрософт](https://opensource.microsoft.com/codeofconduct/). Дополнительные сведения см. в разделе [часто задаваемых вопросов о правилах поведения](https://opensource.microsoft.com/codeofconduct/faq/). Если у вас возникли вопросы или замечания, напишите нам по адресу [opencode@microsoft.com](mailto:opencode@microsoft.com).
