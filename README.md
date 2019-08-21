@@ -74,7 +74,8 @@ To run this code sample, the following are required.
 
 ## Run the project
 
-1. Press F5. 
+1. Build the solution.
+2. Press F5. 
 3. In PowerPoint, open the **Insert** tab, and select **Pick a chart** to open the task pane add-in. The home page provides instructions.
 
 ## Known issues
