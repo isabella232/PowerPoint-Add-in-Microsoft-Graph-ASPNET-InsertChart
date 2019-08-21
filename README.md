@@ -55,11 +55,9 @@ To run this code sample, the following are required.
 
 ## Configure the project
 
-1. In **Visual Studio**, choose the **PowerPoint-Add-in-Microsoft-Graph-ASPNET-InsertChartWeb** project. In **Properties**, ensure **SSL Enabled** is **True**. Verify that the **SSL URL** uses the same domain name and port number as those listed in step 3 below.
- 
-2. Ensure your Azure subscription is bound to your Office 365 tenant. For more information, see the Active Directory team's blog post, [Creating and Managing Multiple Windows Azure Active Directories](http://blogs.technet.com/b/ad/archive/2013/11/08/creating-and-managing-multiple-windows-azure-active-directories.aspx). The section **Adding a new directory** will explain how to do this. You can also see [Set up your Office 365 development environment](https://msdn.microsoft.com/office/office365/howto/setup-development-environment#bk_CreateAzureSubscription) and the section **Associate your Office 365 account with Azure AD to create and manage apps** for more information.
+1. Ensure your Azure subscription is bound to your Office 365 tenant. For more information, see the Active Directory team's blog post, [Creating and Managing Multiple Windows Azure Active Directories](http://blogs.technet.com/b/ad/archive/2013/11/08/creating-and-managing-multiple-windows-azure-active-directories.aspx). The section **Adding a new directory** will explain how to do this. You can also see [Set up your Office 365 development environment](https://msdn.microsoft.com/office/office365/howto/setup-development-environment#bk_CreateAzureSubscription) and the section **Associate your Office 365 account with Azure AD to create and manage apps** for more information.
 
-3. Register your application using the [Azure Management Portal](https://manage.windowsazure.com). Sign-in with the account of an administrator or your Office 365 subscription. To learn how to register your application, see [Register an application with the Microsoft identity platforml](https://msdn.microsoft.com/office/office365/HowTo/add-common-consent-manually). Use the following settings:
+2. Register your application using the [Azure Management Portal](https://manage.windowsazure.com). Sign-in with the account of an administrator or your Office 365 subscription. To learn how to register your application, see [Register an application with the Microsoft identity platforml](https://msdn.microsoft.com/office/office365/HowTo/add-common-consent-manually). Use the following settings:
 
  - REDIRCT URI: https://localhost:44301/AzureADAuth/Authorize	
  - SUPPORTED ACCOUNT TYPES: "Accounts in this organizational directory only"
@@ -68,13 +66,16 @@ To run this code sample, the following are required.
 
 	> Note: After you register your application, copy the **Application (client) ID** and the **Directory (tenant) ID** on the **Overview** blade of the App Registration in the Azure Management Portal. When you create the client secret on the **Certificates & secrets** blade, copy it too. 
 	 
-4.  In web.config, use the values that you copied in the previous step. Set **AAD:ClientID** to your client id, set **AAD:ClientSecret** to your client secret, and set **"AAD:O365TenantID"** to your tenant ID. 
+3.  In web.config, use the values that you copied in the previous step. Set **AAD:ClientID** to your client id, set **AAD:ClientSecret** to your client secret, and set **"AAD:O365TenantID"** to your tenant ID. 
+
+4. Open the solution in **Visual Studio**, and open **Solution Explorer** and then choose the **PowerPoint-Add-in-Microsoft-Graph-ASPNET-InsertChartWeb** project. In **Properties**, ensure **SSL Enabled** is **True**. Verify that the **SSL URL**property uses the same domain name and port number as those listed in step 2 above.
+
+5. In **Solution Explorer**, right-click the topmost node -- the **Solution ...** node. Select **Set Startup Projects**. In the dialog that opens, expand **Common Properites** and select **Startup Project**. Enable **Multiple startup projects**. Ensure that the project whose name ends with "Web" is listed first and that both projects are set to **Start** in the **Action** column. 
 
 ## Run the project
-1. Open the Visual Studio solution file. 
-2. Right-click **PowerPoint-Add-in-Microsoft-Graph-ASPNET-InsertChart**, and then choose **Set as StartUp Project**.
-2. Press F5. 
-3. In PowerPoint, open the **Insert** tab, and select **Pick a chart** to open the task pane add-in.
+
+1. Press F5. 
+3. In PowerPoint, open the **Insert** tab, and select **Pick a chart** to open the task pane add-in. The home page provides instructions.
 
 ## Known issues
 
@@ -89,6 +90,7 @@ To run this code sample, the following are required.
 	* Resolution: Unzip your files to a folder directly under the root (e.g. c:\sample).
 
 ## Questions and comments
+
 We'd love to get your feedback about the *Insert Excel charts using Microsoft Graph in a PowerPoint Add-in* sample. You can send your feedback to us in the *Issues* section of this repository.
 Questions about Office 365 development in general should be posted to [Stack Overflow](http://stackoverflow.com/questions/tagged/Office365+API). Ensure your questions are tagged with [office-js], [MicrosoftGraph] and [API].
 
@@ -99,8 +101,7 @@ Questions about Office 365 development in general should be posted to [Stack Ove
 * [Office Add-ins documentation](https://docs.microsoft.com/en-us/office/dev/add-ins/overview/office-add-ins)
 
 ## Copyright
+
 Copyright (c) 2016 - 2019 Microsoft Corporation. All rights reserved.
-
-
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
