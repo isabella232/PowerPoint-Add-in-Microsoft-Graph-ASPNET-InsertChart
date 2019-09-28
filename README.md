@@ -5,6 +5,7 @@ products:
 - office-excel
 - office-365
 - office-onedrive
+- ms-graph
 languages:
 - javascript
 extensions:
